@@ -40,7 +40,7 @@ def check_lev_end(line):
 
 def parse_lev(line):
 	if line.startswith('@') and not check_lev_end(line):
-		lev_list = map(lambda x: x.strip(' ').strip('\n').strip('\r'), line[1:].split(','))
+		lev_list = list(map(lambda x: x.strip(' ').strip('\n').strip('\r'), line[1:].split(',')))
 		return lev_list
 	else:
 		return None
