@@ -40,7 +40,7 @@ def check_lev_end(line):
 
 def parse_lev(line):
 	if line.startswith('@') and not check_lev_end(line):
-		lev_list = map(lambda x: x.strip(' ').strip('\n').strip('\r'), line[1:].split(','))
+		lev_list = list(map(lambda x: x.strip(' ').strip('\n').strip('\r'), line[1:].split(',')))
 		return lev_list
 	else:
 		return None
@@ -63,7 +63,7 @@ def parse2tree(lines, tree_module):
 def main():
 	file_name = sys.argv[1]
 	tree_module = tree()
-	parse2tree(open(file_name,'r').readlines(),tree_module)
+	parse2tree(open(file_name,'r',encoding='utf-8').readlines(),tree_module)
 
 	tree_value = tree_module.get_dict()
 	for key in tree_value:
